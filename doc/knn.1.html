@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>knn(1) - Compute the average nearest neighbours degree function</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNOPSIS">SYNOPSIS</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#PARAMETERS">PARAMETERS</a>
+    <a href="#OUTPUT">OUTPUT</a>
+    <a href="#EXAMPLES">EXAMPLES</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+    <a href="#REFERENCES">REFERENCES</a>
+    <a href="#AUTHORS">AUTHORS</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>knn(1)</li>
+    <li class='tc'>www.complex-networks.net</li>
+    <li class='tr'>knn(1)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>knn</code> - <span class="man-whatis">Compute the average nearest neighbours degree function</span>
+</p>
+
+<h2 id="SYNOPSIS">SYNOPSIS</h2>
+
+<p><code>knn</code> <var>graph_in</var> [<var>NO|LIN|EXP</var> <var>bin_param</var>]</p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><code>knn</code> computes the average nearest neighbours degree function knn(k)
+of the graph <var>graph_in</var> given as input. The program can (optionally)
+average the results over bins of equal or exponentially increasing
+width (the latter is also known as logarithmic binning).</p>
+
+<h2 id="PARAMETERS">PARAMETERS</h2>
+
+<dl>
+<dt><var>graph_in</var></dt><dd><p>  undirected input graph (edge list). If is equal to <code>-</code> (dash), read
+  the edge list from STDIN.</p></dd>
+<dt class="flush">NO</dt><dd><p>  If the second (optional) parameter is equal to <code>NO</code>, or omitted,
+  the program will print on output the values of knn(k) for all the
+  degrees in <var>graph_in</var>.</p></dd>
+<dt class="flush">LIN</dt><dd><p>  If the second (optional) parameter is equal to <code>LIN</code>, the program
+  will average the values of knn(k) over <var>bin_param</var> bins of equal
+  length.</p></dd>
+<dt class="flush">EXP</dt><dd><p>  If the second (optional) parameter is equal to <code>EXP</code>, the progam
+  will average the values of knn(k) over bins of exponentially
+  increasing width (also known as 'logarithmic binning', which is
+  odd, since the width of subsequent bins increases exponentially,
+  not logarithmically, but there you go...). In this case,
+  <var>bin_param</var> is the exponent of the increase.</p></dd>
+<dt><var>bin_param</var></dt><dd><p>  If the second parameter is equal to <code>LIN</code>, <var>bin_param</var> is the
+  number of bins used in the linear binning. If the second parameter
+  is <code>EXP</code>, <var>bin_param</var> is the exponent used to determine the width
+  of each bin.</p></dd>
+</dl>
+
+
+<h2 id="OUTPUT">OUTPUT</h2>
+
+<p>The output is in the form:</p>
+
+<pre><code>    k1 knn(k1)
+    k2 knn(k2)
+    ....
+</code></pre>
+
+<p>If no binning is selected, <code>k1</code>, <code>k2</code>, etc. are the degrees observed
+in <var>graph_in</var>. If linear or exponential binning is required, then
+<code>k1</code>, <code>k2</code>, etc. are the right extremes of the corresponding bin.</p>
+
+<h2 id="EXAMPLES">EXAMPLES</h2>
+
+<p>To compute the average neanest-neighbours degree function for a given
+graph we just run:</p>
+
+<pre><code>      $ knn er_1000_5000.net 
+      2 10.5
+      3 11.333333
+      4 10.785714
+      5 11.255319
+      6 11.336601
+      7 11.176292
+      8 11.067568
+      9 11.093519
+      10 10.898438
+      11 10.906009
+      12 11.031353
+      13 10.73938
+      14 10.961538
+      15 10.730864
+      16 10.669118
+      17 10.702206
+      18 10.527778
+      19 11.302632
+      20 11.8
+      $
+</code></pre>
+
+<p>Since we have not requested a binning, the program will output the
+value of knn(k) for each of the degrees actually observed in the graph
+<code>er_1000_5000.net</code> (the mininum degree is 2 and the maximum degree is
+20). Notice that in this case, as expected in a graph without
+degree-degree correlations, the values of knn(k) are almost
+independent of k.</p>
+
+<p>We can also ask <code>knn</code> to bin the results over 5 bins of equal width by
+running:</p>
+
+<pre><code>    $ knn er_1000_5000.net LIN 5
+    6 11.249206
+    10 11.037634
+    14 10.919366
+    18 10.68685
+    22 11.474138
+    $
+</code></pre>
+
+<p>Let us consider the case of <code>movie_actors.net</code>, i.e. the actors
+collaboration network. Here we ask <code>knn</code> to compute the average
+nearest-neighbours degrees using exponential binning:</p>
+
+<pre><code>    $ knn movie_actors.net EXP 1.4
+    2 142.56552
+    5 129.09559
+    9 158.44493
+    15 198.77922
+    23 205.96538
+    34 210.07379
+    50 227.57167
+    72 235.89857
+    102 254.47583
+    144 276.572
+    202 307.11004
+    283 337.83733
+    397 370.34222
+    556 410.89117
+    779 446.66331
+    1091 498.73118
+    1527 547.31923
+    2137 577.87852
+    2991 582.6855
+    4187 557.44801
+    $
+</code></pre>
+
+<p>Notice that, due to the presence of the second parameter <code>EXP</code>, the
+program has printed on output knn(k) over bins of exponentially
+increasing width, using an exponent <code>1.4</code>. This is useful for plotting
+with log or semilog axes. In this case, the clear increasing trend of
+knn(k) indicates the presence of assortative correlations.</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="knn_w.1.html">knn_w<span class="s">(1)</span></a>, <a class="man-ref" href="deg_seq.1.html">deg_seq<span class="s">(1)</span></a></p>
+
+<h2 id="REFERENCES">REFERENCES</h2>
+
+<ul>
+<li>V. Latora, V. Nicosia, G. Russo, "Complex Networks: Principles,
+Methods and Applications", Chapter 7, Cambridge University Press
+(2017)</li>
+</ul>
+
+
+<h2 id="AUTHORS">AUTHORS</h2>
+
+<p>(c) Vincenzo 'KatolaZ' Nicosia 2009-2017 <code>&lt;v.nicosia@qmul.ac.uk&gt;</code>.</p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>www.complex-networks.net</li>
+    <li class='tc'>September 2017</li>
+    <li class='tr'>knn(1)</li>
+  </ol>
+
+  </div>
+</body>
+</html>

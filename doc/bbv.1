@@ -1,0 +1,89 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "BBV" "1" "September 2017" "www.complex-networks.net" "www.complex-networks.net"
+.
+.SH "NAME"
+\fBbbv\fR \- Grow a weighted scale\-free random graph
+.
+.SH "SYNOPSIS"
+\fBbbv\fR \fIN\fR \fIm\fR \fIn0\fR \fIw0\fR \fIdelta\fR
+.
+.SH "DESCRIPTION"
+\fBbbv\fR grows an undirected weighted random scale\-free graph with \fIN\fR nodes using the model proposed by Barrat, Barthelemy, and Vespignani\. The initial network is a clique of \fIn0\fR nodes, and each new node creates \fIm\fR new edges, each with weight \fIw0\fR\. The parameter \fIdelta\fR sets the amount of weight to be redistributed in the neighbourhood of newly\-connected nodes\.
+.
+.SH "PARAMETERS"
+.
+.TP
+\fIN\fR
+Number of nodes of the final graph\.
+.
+.TP
+\fIm\fR
+Number of edges created by each new node\.
+.
+.TP
+\fIn0\fR
+Number of nodes in the initial (seed) graph\.
+.
+.TP
+\fIw0\fR
+Weight of each new edge (must be >=0)
+.
+.TP
+\fIdelta\fR
+The amount of weight to be redistributed among the neighbours of newly\-connected nodes\.
+.
+.SH "OUTPUT"
+\fBbbv\fR prints on STDOUT the edge list of the final graph, which consists of three columns:
+.
+.IP "" 4
+.
+.nf
+
+    node1 node2 weight
+.
+.fi
+.
+.IP "" 0
+.
+.P
+where \fBweight\fR is the weight of the corresponding edge\. Please note that each edge is printed only once\.
+.
+.SH "EXAMPLES"
+The following command:
+.
+.IP "" 4
+.
+.nf
+
+    $ bbv 10000 3 5 1\.0 0\.5 > bbv_10000_3_5_1\.0_0\.5\.txt
+.
+.fi
+.
+.IP "" 0
+.
+.P
+creates a weighted scale\-free graph with \fIN=10000\fR nodes, where each new node creates \fIm=3\fR new edges and the initial seed network is a ring of \fIn0=5\fR nodes\. Each new edge has an initial weight equal to \fIw0\fR\. The weights of existing edges are rearranged after the addition of a new edge, by rearranging an amount of weight equal to \fIdelta\fR\. The final graph is saved in the file \fBbbv_10000_3_5_1\.0_0\.5\.txt\fR (notice the STDOUT redirection operator \fB>\fR)\.
+.
+.SH "SEE ALSO"
+ba(1), bb_fitness(1), dms(1)
+.
+.SH "REFERENCES"
+.
+.IP "\(bu" 4
+A\. Barrat, M\. Barthelemy, and A\. Vespignani\. "Weighted Evolving Networks: Coupling Topology and Weight Dynamics"\. Phys\. Rev\. Lett\. 92 (2004), 228701\.
+.
+.IP "\(bu" 4
+A\. Barrat, M\. Barthelemy, and A\. Vespignani\. "Modeling the evolution of weighted networks"\. Phys\. Rev\. E 70 (2004), 066149\.
+.
+.IP "\(bu" 4
+V\. Latora, V\. Nicosia, G\. Russo, "Complex Networks: Principles, Methods and Applications", Chapter 6, Cambridge University Press (2017)
+.
+.IP "\(bu" 4
+V\. Latora, V\. Nicosia, G\. Russo, "Complex Networks: Principles, Methods and Applications", Appendix 13, Cambridge University Press (2017)
+.
+.IP "" 0
+.
+.SH "AUTHORS"
+(c) Vincenzo \'KatolaZ\' Nicosia 2009\-2017 \fB<v\.nicosia@qmul\.ac\.uk>\fR\.

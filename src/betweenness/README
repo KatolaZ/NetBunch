@@ -1,0 +1,8 @@
+- bet_dependency computes the contribution to betweenness of each node in the graph
+  restricted to shortest paths originating from a range of nodes
+
+ --- TODO ---
+
+- make a multi-threaded version
+- make an MPI implementation
+- make a version which considers only X% of the nodes, sampled at random

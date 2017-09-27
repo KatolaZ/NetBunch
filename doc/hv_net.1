@@ -1,0 +1,83 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "HV_NET" "1" "September 2017" "www.complex-networks.net" "www.complex-networks.net"
+.
+.SH "NAME"
+\fBhv_net\fR \- Sample a random graph with an assigned joint degree distribution
+.
+.SH "SYNOPSIS"
+\fBhv_net\fR \fIgraph_in\fR [SHOW]
+.
+.SH "DESCRIPTION"
+\fBhv_net\fR samples a random graph whose joint degree distribution is equal to that of another graph provided as input, using the hidden\-variable model proposed by Boguna ans Pastor\-Satorras\.
+.
+.SH "PARAMETERS"
+.
+.TP
+\fIgraph_in\fR
+File containing the edge list of the existing graph\. If equal to \'\-\' (dash), read the edge list from STDIN\.
+.
+.TP
+SHOW
+If the second parameter is equal to \fBSHOW\fR, the program prints on STDERR the hidden variable and actual degree of each node\.
+.
+.SH "EXAMPLES"
+Let us assume that we want to create a graph whose joint degree distribution is equal to that of the graph contained in \fBAS\-20010316\.net\fR (i\.e\., the graph of the Internet at the AS level in March 2001)\. We can use the command:
+.
+.IP "" 4
+.
+.nf
+
+    $ hv_net AS\-20010316\.net > AS\-20010316\.net_rand
+.
+.fi
+.
+.IP "" 0
+.
+.P
+which will sample a random graph with the same joint\-degree distribution and will save its edge list in the file \fBAS\-20010316\.net_rand\fR (notice the STDOUT redirection operator \fB>\fR)\. Additionally, we can also save the values of the hidden variables and actual degrees of the nodes by specifying \fBSHOW\fR as a second parameter:
+.
+.IP "" 4
+.
+.nf
+
+    $ hv_net AS\-20010316\.net SHOW > AS\-20010316\.net_rand 2>AS\-20010316\.net_rand_hv
+.
+.fi
+.
+.IP "" 0
+.
+.P
+In this case, the file \fBAS\-20010316\.net_rand_hv\fR will contain the values of the hidden variable of each node and of the actual degree of the node in the sampled graph, in the format:
+.
+.IP "" 4
+.
+.nf
+
+     h1 k1
+     h2 k2
+     \.\.\.\.
+.
+.fi
+.
+.IP "" 0
+.
+.SH "SEE ALSO"
+conf_model_deg(1), conf_model_deg_nocheck(1)
+.
+.SH "REFERENCES"
+.
+.IP "\(bu" 4
+M\. Boguna and R\. Pastor\-Satorras\. "Class of correlated random networks with hidden variables"\. Phys\. Rev\. E 68 (2003), 036112\.
+.
+.IP "\(bu" 4
+V\. Latora, V\. Nicosia, G\. Russo, "Complex Networks: Principles, Methods and Applications", Chapter 7, Cambridge University Press (2017)
+.
+.IP "\(bu" 4
+V\. Latora, V\. Nicosia, G\. Russo, "Complex Networks: Principles, Methods and Applications", Appendix 14, Cambridge University Press (2017)
+.
+.IP "" 0
+.
+.SH "AUTHORS"
+(c) Vincenzo \'KatolaZ\' Nicosia 2009\-2017 \fB<v\.nicosia@qmul\.ac\.uk>\fR\.

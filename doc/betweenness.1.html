@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>betweenness(1) - Compute the betweenness centrality of nodes and edges</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNOPSIS">SYNOPSIS</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#PARAMETERS">PARAMETERS</a>
+    <a href="#OUTPUT">OUTPUT</a>
+    <a href="#EXAMPLES">EXAMPLES</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+    <a href="#REFERENCES">REFERENCES</a>
+    <a href="#AUTHORS">AUTHORS</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>betweenness(1)</li>
+    <li class='tc'>www.complex-networks.net</li>
+    <li class='tr'>betweenness(1)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>betweenness</code> - <span class="man-whatis">Compute the betweenness centrality of nodes and edges</span>
+</p>
+
+<h2 id="SYNOPSIS">SYNOPSIS</h2>
+
+<p><code>betweenness</code> <var>graph_in</var> [ SEQ <var>node_start</var> [<var>node_end</var>]]</p>
+
+<p><code>betweenness</code> <var>graph_in</var> [ RND <var>num</var>]</p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><code>betweenness</code> computes the betweenness centrality of all the nodes and
+edges of an undirected graph provided as input. The program implements
+the algorithm by U. Brandes, and computes the betweenness using all
+the shortest paths originating from a subset of the nodes of the
+graph, either in a sequence (if <em>SEQ</em> is the second parameter) or
+sampled unirofmly at random (if <em>RND</em> is the second parameter). If
+<var>graph_in</var> is the only parameter, <code>betweenness</code> takes into account all
+the shortest paths.</p>
+
+<h2 id="PARAMETERS">PARAMETERS</h2>
+
+<dl>
+<dt><var>graph_in</var></dt><dd><p>  input graph (edge list) if equal to <code>-</code> (dash), read the edge list
+  from STDIN.</p></dd>
+<dt><var>node_start</var></dt><dd><p>  The label of the first node in a sequence of nodes (when <em>SEQ</em> is
+  the second parameter).</p></dd>
+<dt><var>node_end</var></dt><dd><p>  The label of the last node in a sequence of nodes (when <em>SEQ</em> is
+  the second parameter).</p></dd>
+<dt class="flush"><var>num</var></dt><dd><p>  The number of nodes to be considered (when <em>RND</em> is the second
+  parameter)</p></dd>
+</dl>
+
+
+<h2 id="OUTPUT">OUTPUT</h2>
+
+<p><code>betweenness</code> prints on the standard output (STDOUT) the betweenness
+centrality of all the nodes, starting from the node with label 0, and
+on the standard error (STDERR) the betweenness centrality of all the
+edges, one edge per line, in the format:</p>
+
+<pre><code>node1 node2 bet_score
+</code></pre>
+
+<h2 id="EXAMPLES">EXAMPLES</h2>
+
+<p>The following command:</p>
+
+<pre><code>      $ betweenness er_1000_5000.txt &gt;node_bet 2&gt;edge_bet
+</code></pre>
+
+<p>computes the node and edge betweenness centrality of the graph
+<code>er_1000_5000.txt</code>, using all the shortest paths. Since we used the
+redirections <code>&gt;node_bet</code> and <code>2&gt;edge_bet</code>, the values of node and edge
+betweenness will be saved in the files <code>node_bet</code> and <code>edge_bet</code>,
+respectively.</p>
+
+<p>The command:</p>
+
+<pre><code>    $ betweenness er_1000_5000.txt SEQ 100 200  2&gt;edge_bet_100_200
+</code></pre>
+
+<p>will compute the betweenness of nodes and edges in the graph
+<code>er_1000_5000.txt</code>, based only on the shortest paths originating from
+the nodes whose labels are in the range [100,200]. The node
+betweenness will be printed on STDOUT, while the edge betweenness will
+be saved in the file <code>edge_bet_100_200</code>.</p>
+
+<p>Finally, the command:</p>
+
+<pre><code>    $ betweenness er_1000_5000.txt RND 250 &gt;node_bet_RND 
+</code></pre>
+
+<p>will compute the betweenness centrality based on the shortest paths
+originating from 250 nodes in the graph, sampled uniformly at
+random. The node betweenness is saved in the file <code>node_bet_RND</code>,
+while the values of edge betweenness are printed on STDOUT.</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="bet_dependency.1.html">bet_dependency<span class="s">(1)</span></a>, <a class="man-ref" href="shortest.1.html">shortest<span class="s">(1)</span></a></p>
+
+<h2 id="REFERENCES">REFERENCES</h2>
+
+<ul>
+<li><p>U. Brandes. "A Faster Algorithm for Betweenness Centrality".
+J. Math. Sociol. 25 (2001), 163-177.</p></li>
+<li><p>V. Latora, V. Nicosia, G. Russo, "Complex Networks: Principles,
+Methods and Applications", Chapter 6, Cambridge University Press
+(2017)</p></li>
+<li><p>V. Latora, V. Nicosia, G. Russo, "Complex Networks: Principles,
+Methods and Applications", Appendix 7, Cambridge University Press
+(2017)</p></li>
+</ul>
+
+
+<h2 id="AUTHORS">AUTHORS</h2>
+
+<p>(c) Vincenzo 'KatolaZ' Nicosia 2009-2017 <code>&lt;v.nicosia@qmul.ac.uk&gt;</code>.</p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>www.complex-networks.net</li>
+    <li class='tc'>September 2017</li>
+    <li class='tr'>betweenness(1)</li>
+  </ol>
+
+  </div>
+</body>
+</html>

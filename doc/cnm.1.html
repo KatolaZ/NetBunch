@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>cnm(1) - Find communities using greedy modularity optimisation</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNOPSIS">SYNOPSIS</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#PARAMETERS">PARAMETERS</a>
+    <a href="#OUTPUT">OUTPUT</a>
+    <a href="#EXAMPLES">EXAMPLES</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+    <a href="#REFERENCES">REFERENCES</a>
+    <a href="#AUTHORS">AUTHORS</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>cnm(1)</li>
+    <li class='tc'>www.complex-networks.net</li>
+    <li class='tr'>cnm(1)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>cnm</code> - <span class="man-whatis">Find communities using greedy modularity optimisation</span>
+</p>
+
+<h2 id="SYNOPSIS">SYNOPSIS</h2>
+
+<p><code>cnm</code> <var>graph_in</var></p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><code>cnm</code> finds the communities in <var>graph_in</var> using the greedy modularity
+optimisation algorithm proposed by Clauset, Newman and Moore. The
+program prints on STDOUT the partition corresponding to the highest
+value of the modularity function, and reports on STDERR the number of
+communities and the corresponding value of modularity at each
+step. The algorithm is quite eficient and thus suitable to find
+communities in large graphs.</p>
+
+<h2 id="PARAMETERS">PARAMETERS</h2>
+
+<dl>
+<dt><var>graph_in</var></dt><dd>  undirected input graph (edge list). If is equal to <code>-</code> (dash), read
+  the edge list from STDIN.</dd>
+</dl>
+
+
+<h2 id="OUTPUT">OUTPUT</h2>
+
+<p>The program prints on STDOUT the partition corresponding to the
+highest value of modularity, in the format:</p>
+
+<pre><code>    ## nc: NUM_COMM Q_max: Q_MAX 
+    node_1 comm_1
+    node_2 comm_2
+    node_3 comm_3
+    ... 
+</code></pre>
+
+<p>where <code>comm_i</code> is the community to which <code>node_i</code> belongs. The first
+output line reports the number of communities <code>NUM_COMM</code> and the
+corresponding value of modularity <code>Q_MAX</code> of the partition.</p>
+
+<p>The program prints on STDERR the number of communities and the
+corresponding value of modularity at each step, in the format:</p>
+
+<pre><code>    nc_1 Q_1
+    nc_2 Q_2
+    nc_3 Q_3
+    ....
+</code></pre>
+
+<p>where <code>nc_i</code> is the number of communities after the i-th marge and
+<code>Q_i</code> is the corresponding value of modularity. Since the algorithm
+merges two communities at each step, the values <code>nc_1</code>, <code>nc_2</code>,
+<code>nc_3</code>, etc.  will be equal to <code>N-1</code>, <code>N-2</code>, <code>N-3</code>, etc.</p>
+
+<h2 id="EXAMPLES">EXAMPLES</h2>
+
+<p>We can use <code>cnm</code> to find communities in the graph
+<code>karate_club_unweighted.net</code> (Zachary Karate Club network) with the
+command:</p>
+
+<pre><code>    $ cnm karate_club_unweighted.net 2&gt; karate_cnm_trace
+    ### nc: 3 Q_max: 0.380671
+    0 16
+    1 2
+    2 2
+    3 2
+    4 16
+    5 16
+    6 16
+    ...
+    30 26
+    31 26
+    32 26
+    33 26
+    $ 
+</code></pre>
+
+<p>The program has found a partition with 3 communities corrisponding to
+a modularity Q=0.380671. Notice that node 0, 4, 5, 6 are in community
+16, node 1, 2, 3 are in community 2, and so forth.  In this example,
+we have chosen to save the information about number of communities and
+modularity at each step in the file <code>karate_cnm_trace</code>.</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="modularity.1.html">modularity<span class="s">(1)</span></a>, <a class="man-ref" href="gn.1.html">gn<span class="s">(1)</span></a>, <a class="man-ref" href="label_prop.1.html">label_prop<span class="s">(1)</span></a></p>
+
+<h2 id="REFERENCES">REFERENCES</h2>
+
+<ul>
+<li><p>A. Clauset, M. E. J. Newman, and C. Moore. "Finding community
+structure in very large networks". Phys. Rev. E 70 (2004), 066111.</p></li>
+<li><p>V. Latora, V. Nicosia, G. Russo, "Complex Networks: Principles,
+Methods and Applications", Appendix 18, Cambridge University Press
+(2017)</p></li>
+<li><p>V. Latora, V. Nicosia, G. Russo, "Complex Networks: Principles,
+Methods and Applications", Chapter 9, Cambridge University Press
+(2017)</p></li>
+</ul>
+
+
+<h2 id="AUTHORS">AUTHORS</h2>
+
+<p>(c) Vincenzo 'KatolaZ' Nicosia 2009-2017 <code>&lt;v.nicosia@qmul.ac.uk&gt;</code>.</p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>www.complex-networks.net</li>
+    <li class='tc'>September 2017</li>
+    <li class='tr'>cnm(1)</li>
+  </ol>
+
+  </div>
+</body>
+</html>

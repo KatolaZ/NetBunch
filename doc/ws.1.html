@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>ws(1) - Create a small-world graph using the Watts-Strogatz model</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNOPSIS">SYNOPSIS</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#PARAMETERS">PARAMETERS</a>
+    <a href="#EXAMPLES">EXAMPLES</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+    <a href="#REFERENCES">REFERENCES</a>
+    <a href="#AUTHORS">AUTHORS</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>ws(1)</li>
+    <li class='tc'>www.complex-networks.net</li>
+    <li class='tr'>ws(1)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>ws</code> - <span class="man-whatis">Create a small-world graph using the Watts-Strogatz model</span>
+</p>
+
+<h2 id="SYNOPSIS">SYNOPSIS</h2>
+
+<p><code>ws</code> <var>N</var> <var>m</var> <em>p</em> [SHOW]</p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><code>ws</code> creates a small-world undirected graph with 'N' nodes using the
+Watts-Strogatz small-world network model.  The nodes are initially
+placed around a circle and each node is connected to its 'm' closest
+neighbours on either side. Then, each edge is rewired (independently)
+with probability 'p'. The program prints on output the edge-list of
+the resulting graph.</p>
+
+<h2 id="PARAMETERS">PARAMETERS</h2>
+
+<dl>
+<dt class="flush"><var>N</var></dt><dd><p>  Number of nodes in the final graph.</p></dd>
+<dt class="flush"><var>m</var></dt><dd><p>  Number of neighbours on the circle graph to which a node is
+  connected on either side (i.e., each node will initially have
+  '2m' edges).</p></dd>
+<dt class="flush"><em>p</em></dt><dd><p>  Edge rewiring probability.</p></dd>
+<dt class="flush">SHOW</dt><dd><p>  If the fourth (optional) parameter is equal to <code>SHOW</code>, the program
+  will print on STDERR the number of edges rewired while constructing
+  the graph.</p></dd>
+</dl>
+
+
+<h2 id="EXAMPLES">EXAMPLES</h2>
+
+<p>The command:</p>
+
+<pre><code>      $ ws 100 3 0.1
+      0 95
+      0 2
+      0 3
+      1 2
+      1 24
+      1 4
+      2 3
+      ....
+      99 0
+      99 56
+      99 2
+      $
+</code></pre>
+
+<p>creates a Watts-Strogatz small-world network with 'N=100' nodes and
+'K=m*N=300' edges, where each edge is independently rewired with
+probability 'p=0.1'. The output of <code>ws</code> is the edge-list of the
+resulting graph. Notice that in this case the first edge od node <code>0</code>
+has been rewired and connected to node <code>95</code>.  In order to be useful,
+such edge-list should be saved into a file. The following command:</p>
+
+<pre><code>      $ ws 100 300 0.1 SHOW &gt; ws_100_3_0.1.net
+      Rewired edges: 32
+      $ 
+</code></pre>
+
+<p>will save the resulting graph in the file <code>ws_100_3_0.1.net</code>. Notice
+the usage of the symbol ">" to redirect the output of the program to
+a file. The line printed on output reports the number of rewired
+edges, since <code>SHOW</code> was specified as a fourth parameter.</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="er_A.1.html">er_A<span class="s">(1)</span></a>, <a class="man-ref" href="er_B.1.html">er_B<span class="s">(1)</span></a></p>
+
+<h2 id="REFERENCES">REFERENCES</h2>
+
+<ul>
+<li><p>D. J. Watts and S. H. Strogatz. "Collective dynamics of
+'small-world' networks".  Nature 393 (1998), 440–442.</p></li>
+<li><p>V. Latora, V. Nicosia, G. Russo, "Complex Networks: Principles,
+Methods and Applications", Chapter 4, Cambridge University Press
+(2017)</p></li>
+</ul>
+
+
+<h2 id="AUTHORS">AUTHORS</h2>
+
+<p>(c) Vincenzo 'KatolaZ' Nicosia 2009-2017 <code>&lt;v.nicosia@qmul.ac.uk&gt;</code>.</p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>www.complex-networks.net</li>
+    <li class='tc'>September 2017</li>
+    <li class='tr'>ws(1)</li>
+  </ol>
+
+  </div>
+</body>
+</html>

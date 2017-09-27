@@ -1,0 +1,51 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "DEG_SEQ" "1" "September 2017" "www.complex-networks.net" "www.complex-networks.net"
+.
+.SH "NAME"
+\fBdeg_seq\fR \- Compute the degree sequence of a graph
+.
+.SH "SYNOPSIS"
+\fBdeg_seq\fR \fIgraph_in\fR
+.
+.SH "DESCRIPTION"
+\fBdeg_seq\fR computes the degree sequence of \fIgraph_in\fR\.
+.
+.SH "PARAMETERS"
+.
+.TP
+\fIgraph_in\fR
+undirected input graph (edge list)\. If is equal to \fB\-\fR (dash), read the edge list from STDIN\.
+.
+.SH "OUTPUT"
+The program prints on STDOUT the degree sequence of \fIgraph_in\fR in the format:
+.
+.IP "" 4
+.
+.nf
+
+    k_1
+    k_2
+    k_3
+    \.\.\.\.
+.
+.fi
+.
+.IP "" 0
+.
+.P
+where \fBk_i\fR is the degree of the i\-th node\.
+.
+.SH "SEE ALSO"
+deg_seq_w(1), conf_model_deg(1), fitmle(1), power_law(1)
+.
+.SH "REFERENCES"
+.
+.IP "\(bu" 4
+V\. Latora, V\. Nicosia, G\. Russo, "Complex Networks: Principles, Methods and Applications", Chapter 10, Cambridge University Press (2017)
+.
+.IP "" 0
+.
+.SH "AUTHORS"
+(c) Vincenzo \'KatolaZ\' Nicosia 2009\-2017 \fB<v\.nicosia@qmul\.ac\.uk>\fR\.

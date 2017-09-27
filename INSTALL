@@ -1,0 +1,74 @@
+===== DOWNLOAD =====
+
+NetBunch can be downloaded from the official website of the book:
+
+  http://www.complex-networks.net
+
+NetBunch binaries are available for Windows (64bit) and Mac OS. Source 
+files are available from the same website, and can be used to compile 
+NetBunch on Linux and unix-like operating systems (but also on Windows
+and Mac OS, if you like). 
+
+If you use a program included in NetBunch, please add a citation to
+the textbook:
+
+  "Complex Networks: Principles, Methods and Application"
+  V. Latora, V. Nicosia, G. Russo, Cambridge University 
+  Press (2017), ISBN: 9781107103184
+
+and to the relevant References indicated in the corresponding source
+files.
+
+
+===== INSTALLATION =====
+
+
+=== Binaries (Windows / Mac OS) ===
+
+To use the binary packages for Windows and/or Mac OS, just download
+the correct version from http://www.complex-networks.net and unzip the
+archive in a directory of your system. The zip file includes:
+
+- all the binaries (in the folder 'bin')
+- the documentation in HTML and man format (in the folder 'netbunch-doc')
+- additional files referred in the manpages (in the folder 'netbunch-examples')
+
+All the programs can be used from the command line, i.e., 'cmd',
+'command', 'PowerShell' (under Windows), or from iTerm or other
+virtual terminal emulators (under Mac OS). 
+
+If you unpack the zip archive in NETBUNCH_FOLDER, you might want to add 
+NETBUNCH_FOLDER/bin to your PATH.
+
+
+=== Installing from sources (Linux / unix / Windows / Mac OS) ===
+
+All the programs in NetBunch are written in ANSI C99, and require only
+an ANSI C99 compiler (i.e., there is no additional dependency).
+NetBunch has been compiled and tested with 'gcc', 'clang' (LLVM),
+'tcc' (tiny C compiler) under Linux, with 'gcc' and 'clang' under Mac
+OS, and with MSYS2 (64-bit compiler based on gcc, see
+http://www.msys2.org/) under Windows.
+
+Due to the absence of dependencies, it should be possible to compile
+NetBunch with any generic ANSI C99 compiler.
+
+To install NetBunch from sources:
+
+- Download the source package from http://www.complex-networks.net
+
+- unpack the tar.gz (or zip) archive in a folder 
+
+- change to that folder and use the standard:
+
+  $ ./configure
+  $ make
+  $ make install
+
+
+N.B.: The documentation of all the programs in NetBunch is written in
+Markdown. The build system uses 'ronn' (a ruby utility for document
+generation) to convert the markdown files into manpages and HTML
+files. Compiled manpages and html files are distributed along with the
+source files, but if you want to rebuild the manpages you must have
+'ronn' (and all its dependencies) installed.

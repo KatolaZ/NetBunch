@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv='content-type' value='text/html;charset=utf8'>
+  <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
+  <title>fitmle(1) - Fit a set of values with a power-law distribution</title>
+  <style type='text/css' media='all'>
+  /* style: man */
+  body#manpage {margin:0}
+  .mp {max-width:100ex;padding:0 9ex 1ex 4ex}
+  .mp p,.mp pre,.mp ul,.mp ol,.mp dl {margin:0 0 20px 0}
+  .mp h2 {margin:10px 0 0 0}
+  .mp > p,.mp > pre,.mp > ul,.mp > ol,.mp > dl {margin-left:8ex}
+  .mp h3 {margin:0 0 0 4ex}
+  .mp dt {margin:0;clear:left}
+  .mp dt.flush {float:left;width:8ex}
+  .mp dd {margin:0 0 0 9ex}
+  .mp h1,.mp h2,.mp h3,.mp h4 {clear:left}
+  .mp pre {margin-bottom:20px}
+  .mp pre+h2,.mp pre+h3 {margin-top:22px}
+  .mp h2+pre,.mp h3+pre {margin-top:5px}
+  .mp img {display:block;margin:auto}
+  .mp h1.man-title {display:none}
+  .mp,.mp code,.mp pre,.mp tt,.mp kbd,.mp samp,.mp h3,.mp h4 {font-family:monospace;font-size:14px;line-height:1.42857142857143}
+  .mp h2 {font-size:16px;line-height:1.25}
+  .mp h1 {font-size:20px;line-height:2}
+  .mp {text-align:justify;background:#fff}
+  .mp,.mp code,.mp pre,.mp pre code,.mp tt,.mp kbd,.mp samp {color:#131211}
+  .mp h1,.mp h2,.mp h3,.mp h4 {color:#030201}
+  .mp u {text-decoration:underline}
+  .mp code,.mp strong,.mp b {font-weight:bold;color:#131211}
+  .mp em,.mp var {font-style:italic;color:#232221;text-decoration:none}
+  .mp a,.mp a:link,.mp a:hover,.mp a code,.mp a pre,.mp a tt,.mp a kbd,.mp a samp {color:#0000ff}
+  .mp b.man-ref {font-weight:normal;color:#434241}
+  .mp pre {padding:0 4ex}
+  .mp pre code {font-weight:normal;color:#434241}
+  .mp h2+pre,h3+pre {padding-left:0}
+  ol.man-decor,ol.man-decor li {margin:3px 0 10px 0;padding:0;float:left;width:33%;list-style-type:none;text-transform:uppercase;color:#999;letter-spacing:1px}
+  ol.man-decor {width:100%}
+  ol.man-decor li.tl {text-align:left}
+  ol.man-decor li.tc {text-align:center;letter-spacing:4px}
+  ol.man-decor li.tr {text-align:right;float:right}
+  </style>
+  <style type='text/css' media='all'>
+  /* style: toc */
+  .man-navigation {display:block !important;position:fixed;top:0;left:113ex;height:100%;width:100%;padding:48px 0 0 0;border-left:1px solid #dbdbdb;background:#eee}
+  .man-navigation a,.man-navigation a:hover,.man-navigation a:link,.man-navigation a:visited {display:block;margin:0;padding:5px 2px 5px 30px;color:#999;text-decoration:none}
+  .man-navigation a:hover {color:#111;text-decoration:underline}
+  </style>
+</head>
+<!--
+  The following styles are deprecated and will be removed at some point:
+  div#man, div#man ol.man, div#man ol.head, div#man ol.man.
+
+  The .man-page, .man-decor, .man-head, .man-foot, .man-title, and
+  .man-navigation should be used instead.
+-->
+<body id='manpage'>
+  <div class='mp' id='man'>
+
+  <div class='man-navigation' style='display:none'>
+    <a href="#NAME">NAME</a>
+    <a href="#SYNOPSIS">SYNOPSIS</a>
+    <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#PARAMETERS">PARAMETERS</a>
+    <a href="#OUTPUT">OUTPUT</a>
+    <a href="#EXAMPLES">EXAMPLES</a>
+    <a href="#SEE-ALSO">SEE ALSO</a>
+    <a href="#REFERENCES">REFERENCES</a>
+    <a href="#AUTHORS">AUTHORS</a>
+  </div>
+
+  <ol class='man-decor man-head man head'>
+    <li class='tl'>fitmle(1)</li>
+    <li class='tc'>www.complex-networks.net</li>
+    <li class='tr'>fitmle(1)</li>
+  </ol>
+
+  <h2 id="NAME">NAME</h2>
+<p class="man-name">
+  <code>fitmle</code> - <span class="man-whatis">Fit a set of values with a power-law distribution</span>
+</p>
+
+<h2 id="SYNOPSIS">SYNOPSIS</h2>
+
+<p><code>fitmle</code> <var>data_in</var> [<var>tol</var> [TEST [<var>num_test</var>]]]</p>
+
+<h2 id="DESCRIPTION">DESCRIPTION</h2>
+
+<p><code>fitmle</code> fits the data points contained in the file <var>data_in</var> with a
+power-law function P(k) ~ k<sup>-gamma</sup>, using the Maximum-Likelihood
+Estimator (MLE). In particular, <code>fitmle</code> finds the exponent <code>gamma</code>
+and the minimum of the values provided on input for which the
+power-law behaviour holds. The second (optional) argument <var>tol</var> sets
+the acceptable statistical error on the estimate of the exponent.</p>
+
+<p>If <code>TEST</code> is provided, the program associates a p-value to the
+goodness of the fit, based on the Kolmogorov-Smirnov statistics
+computed on <var>num_test</var> sampled distributions from the theoretical
+power-law function. If <var>num_test</var> is not provided, the test is based
+on 100 sampled distributions.</p>
+
+<h2 id="PARAMETERS">PARAMETERS</h2>
+
+<dl>
+<dt class="flush"><var>data_in</var></dt><dd><p>  Set of values to fit. If is equal to <code>-</code> (dash), read the set from
+  STDIN.</p></dd>
+<dt class="flush"><var>tol</var></dt><dd><p>  The acceptable statistical error on the estimation of the
+  exponent. If omitted, it is set to 0.1.</p></dd>
+<dt class="flush">TEST</dt><dd><p>  If the third parameter is <code>TEST</code>, the program computes an estimate
+  of the p-value associated to the best-fit, based on <var>num_test</var>
+  synthetic samples of the same size of the input set.</p></dd>
+<dt><var>num_test</var></dt><dd><p>  Number of synthetic samples to use for the estimation of the
+  p-value of the best fit.</p></dd>
+</dl>
+
+
+<h2 id="OUTPUT">OUTPUT</h2>
+
+<p>If <code>fitmle</code> is given less than three parameters (i.e., if <code>TEST</code> is
+not specified), the output is a line in the format:</p>
+
+<pre><code>    gamma k_min ks
+</code></pre>
+
+<p>where <code>gamma</code> is the estimate for the exponent, <code>k_min</code> is the
+smallest of the input values for which the power-law behaviour holds,
+and <code>ks</code> is the value of the Kolmogorov-Smirnov statistics of the
+best-fit.</p>
+
+<p>If <code>TEST</code> is specified, the output line contains also the estimate of
+the p-value of the best fit:</p>
+
+<pre><code>    gamma k_min ks p-value
+</code></pre>
+
+<p>where <code>p-value</code> is based on <var>num_test</var> samples (or just 100, if
+<var>num_test</var> is not specified) of the same size of the input, obtained
+from the theoretical power-law function computed as a best fit.</p>
+
+<h2 id="EXAMPLES">EXAMPLES</h2>
+
+<p>Let us assume that the file <code>AS-20010316.net_degs</code> contains the degree
+sequence of the data set <code>AS-20010316.net</code> (the graph of the Internet
+at the AS level in March 2001). The exponent of the best-fit power-law
+distribution can be obtained by using:</p>
+
+<pre><code>    $ fitmle AS-20010316.net_degs 
+    Using discrete fit
+    2.06165 6 0.031626 0.17
+    $
+</code></pre>
+
+<p>where <code>2.06165</code> is the estimated value of the exponent <code>gamma</code>, <code>6</code> is
+the minimum degree value for which the power-law behaviour holds, and
+<code>0.031626</code> is the value of the Kolmogorov-Smirnov statistics of the
+best-fit. The program is also telling us that it decided to use the
+discrete fitting procedure, since all the values in
+<code>AS-20010316.net_degs</code> are integers. The latter information is printed
+to STDERR.</p>
+
+<p>It is possible to compute the p-value of the estimate by running:</p>
+
+<pre><code>    $ fitmle AS-20010316.net_degs 0.1 TEST
+    Using discrete fit
+    2.06165 6 0.031626 0.17
+    $
+</code></pre>
+
+<p>which provides a p-value equal to 0.17, meaning that 17% of the
+synthetic samples showed a value of the KS statistics larger than that
+of the best-fit. The estimation of the p-value here is based on 100
+synthetic samples, since <var>num_test</var> was not provided. If we allow a
+slightly larger value of the statistical error on the estimate of the
+exponent <code>gamma</code>, we obtain different values of <code>gamma</code> and <code>k_min</code>,
+and a much higher p-value:</p>
+
+<pre><code>    $ fitmle AS-20010316.net_degs 0.15 TEST 1000
+    Using discrete fit
+    2.0585 19 0.0253754 0.924
+    $
+</code></pre>
+
+<p>Notice that in this case, the p-value of the estimate is equal to
+0.924, and is based on 1000 synthetic samples.</p>
+
+<h2 id="SEE-ALSO">SEE ALSO</h2>
+
+<p><a class="man-ref" href="deg_seq.1.html">deg_seq<span class="s">(1)</span></a>, <a class="man-ref" href="power_law.1.html">power_law<span class="s">(1)</span></a></p>
+
+<h2 id="REFERENCES">REFERENCES</h2>
+
+<ul>
+<li><p>A. Clauset, C. R. Shalizi, and M. E. J. Newman. "Power-law
+distributions in empirical data". SIAM Rev. 51, (2007), 661-703.</p></li>
+<li><p>V. Latora, V. Nicosia, G. Russo, "Complex Networks: Principles,
+Methods and Applications", Chapter 5, Cambridge University Press
+(2017)</p></li>
+</ul>
+
+
+<h2 id="AUTHORS">AUTHORS</h2>
+
+<p>(c) Vincenzo 'KatolaZ' Nicosia 2009-2017 <code>&lt;v.nicosia@qmul.ac.uk&gt;</code>.</p>
+
+
+  <ol class='man-decor man-foot man foot'>
+    <li class='tl'>www.complex-networks.net</li>
+    <li class='tc'>September 2017</li>
+    <li class='tr'>fitmle(1)</li>
+  </ol>
+
+  </div>
+</body>
+</html>
