@@ -1,0 +1,18 @@
+netbunch for Debian/Devuan/Ubuntu
+------------------
+
+This is NetBunch, the collection of software for network analysis
+accompanying the book:
+
+  "Complex Networks: Principles, Methods and Application"
+  V. Latora, V. Nicosia, G. Russo, Cambridge University 
+  Press (2017), ISBN: 9781107103184
+  https://www.cambridge.org/9781107103184
+
+NetBunch includes all the programs implementing the algorithms
+described in the Appendices of the book, and several more. If you use
+a program included in NetBunch, please add a citation to the textbook
+above and to the relevant References indicated in the corresponding
+source files.
+
+ -- Vincenzo (KatolaZ) Nicosia <katolaz@freaknet.org>  Thu, 28 Sep 2017 06:46:47 +0100

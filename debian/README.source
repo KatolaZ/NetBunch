@@ -1,0 +1,51 @@
+===== NetBunch-1.0 =====
+
+This is NetBunch, the collection of software for network analysis
+accompanying the book:
+
+  "Complex Networks: Principles, Methods and Application"
+  V. Latora, V. Nicosia, G. Russo, Cambridge University 
+  Press (2017), ISBN: 9781107103184
+  http://www.cambridge.org/gb/academic/subjects/physics/statistical-physics/complex-networks-principles-methods-and-applications?format=HB
+
+NetBunch includes all the programs implementing the algorithms
+described in the Appendices of the book, and several more. If you use
+a program included in NetBunch, please add a citation to the textbook
+above and to the relevant References indicated in the corresponding
+source files.
+
+See 'INSTALL' for information about downloading and installing
+NetBunch.
+
+NetBunch is written and maintained by Vincenzo 'KatolaZ' Nicosia
+(v.nicosia@qmul.ac.uk) (c) 2009-2017.
+
+The programs included in NetBunch can be used, modified, and redistributed
+under the terms of the GNU General Public License, either version 3 of the 
+License or, at your option, any later version. 
+
+NetBunch is distributed in the hope that it will be useful, but WITHOUT ANY 
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more 
+details.
+
+See the file 'COPYING' for additional details.
+
+
+===== DOCUMENTATION =====
+
+The documentation of all the programs included in NetBunch is
+available at the URL:
+
+  http://www.complex-networks.net
+  
+Moreover, all the manpages are available in HTML format in the folder
+'netbunch-doc' of the binary distributions.
+
+If you compile NetBunch from sources, the HTML files will be put under
+$(prefix)/netbunch-doc (default to /usr/local/netbunch-doc), while the
+manpages will be installed under $(prefix)/share/man/man1 (default to
+/usr/local/share/man/man1).
+
+All the documentation in NetBunch can be used and distributed
+according to the terms the GNU Free Documentation License, version 1.3.

@@ -1,0 +1,49 @@
+Source: netbunch
+Section: science
+Priority: optional
+Maintainer: Vincenzo (KatolaZ) Nicosia <katolaz@freaknet.org>
+Build-Depends: debhelper (>= 9), autotools-dev
+Standards-Version: 3.9.8
+Homepage: http://www.complex-networks.net
+Vcs-Git: https://github.com/KatolaZ/NetBunch/
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/netbunch.git
+
+Package: netbunch
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A collection of programs for complex networks analysis
+  NetBunch is a collection of command-line programs for complex
+  networks analysis, accompanying the textbook "Complex Networks: 
+  Principles, Methods and Applications" by V. Latora, V. Nicosia,
+  G. Russo, Cambridge University Press (2017).
+  .
+  The suite includes programs to compute simple node and graph 
+  properties, such as:
+  .
+  - connected components
+  - degrees and degree correlations
+  - node centrality
+  - paths and distances
+  - node and edge betweenness
+  - centrality
+  - clustering
+  - cycles
+  - motifs 
+  - communities
+  - spanning trees
+  - ... 
+  .
+  Moreover, NetBunch includes utilities to create synthetic 
+  networks using different models, such as:
+  .
+  - Erdos-Renyi random graphs
+  - Configuration model
+  - Small-world model (Watts-Strogatz)
+  - Linear preferential attachment (Barabasi-Albert)
+  - Linear preferential attachment with tunable exponent 
+    (Dorogovtsev-Mendes-Samukin)
+  - Fitness model (Bianconi-Barabasi)
+  - Hidden-variable model (Boguna and Pastor-Satorras)
+  - ....
+
+
