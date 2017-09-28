@@ -1,0 +1,12 @@
+/debian/manpage.1.ex
+/debian/manpage.sgml.ex
+/debian/manpage.xml.ex
+/debian/menu.ex
+/debian/netbunch.cron.d.ex
+/debian/netbunch.default.ex
+/debian/netbunch.doc-base.EX
+/debian/postinst.ex
+/debian/postrm.ex
+/debian/preinst.ex
+/debian/prerm.ex
+/debian/watch.ex
